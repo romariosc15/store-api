@@ -18,18 +18,23 @@ class ProductService {
   }
 
   async findOne(id) {
-    return { id };
+    const row = await models.Product.findByPk(id);
+    if(!row){
+      throw boom.notFound('Product not found.');
+    };
+    return row;
   }
 
   async update(id, changes) {
-    return {
-      id,
-      changes,
-    };
+    const row = await this.findOne(id);
+    const rowUpdated = await row.update(changes);
+    return rowUpdated;
   }
 
   async delete(id) {
-    return { id };
+    const row = await this.findOne(id);
+    await row.destroy();
+    return{ id };
   }
 
 }
