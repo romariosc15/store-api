@@ -3,6 +3,7 @@ const express = require('express');
 const ProductService = require('./../services/product.service');
 const validatorHandler = require('./../middlewares/validator.handler');
 const { createProductSchema, updateProductSchema, getProductSchema } = require('./../schemas/product.schema');
+const { ormErrorHandler } = require('./../middlewares/error.handler');
 
 const router = express.Router();
 const service = new ProductService();
@@ -37,7 +38,7 @@ router.post('/',
       const newProduct = await service.create(body);
       res.status(201).json(newProduct);
     } catch (error) {
-      next(error);
+      ormErrorHandler(error, req, res, next);
     }
   }
 );
@@ -52,7 +53,7 @@ router.patch('/:id',
       const product = await service.update(id, body);
       res.json(product);
     } catch (error) {
-      next(error);
+      ormErrorHandler(error, req, res, next);
     }
   }
 );

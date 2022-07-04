@@ -13,6 +13,11 @@ const ProductSchema= {
     field: 'category_id',
     type: DataTypes.INTEGER
   },
+  code:{
+    allowNull: false,
+    type: DataTypes.STRING,
+    unique: true
+  },
   image:{
     allowNull: false,
     type: DataTypes.STRING

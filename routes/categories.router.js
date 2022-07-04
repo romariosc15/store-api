@@ -37,7 +37,7 @@ router.post('/',
       const newCategory = await service.create(body);
       res.status(201).json(newCategory);
     } catch (error) {
-      next(error);
+      ormErrorHandler(error, req, res, next);
     }
   }
 );
@@ -52,7 +52,7 @@ router.patch('/:id',
       const category = await service.update(id, body);
       res.json(category);
     } catch (error) {
-      next(error);
+      ormErrorHandler(error, req, res, next);
     }
   }
 );

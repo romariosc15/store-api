@@ -9,11 +9,10 @@ const URI = `postgres://${USER}:${PASSWORD}@${config.dbHost}:${config.dbPort}/${
 
 const sequelize = new Sequelize(URI, {
   dialect: 'postgres',
-  logging: (message) => console.log(message)
+  //logging: (message) => console.log(message)
 });
 
 setupModels(sequelize);
 
-sequelize.sync();
 
 module.exports = sequelize;
