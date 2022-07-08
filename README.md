@@ -1,6 +1,7 @@
 # API REST del proyecto "Tienda Virtual"
 
 En este repositorio se encuentra el código utilizado para el despliegue de la [API REST de Tienda Virtual](https://store-api-beta.herokuapp.com/) a la plataforma de Heroku.
+
 Puedes encontrar también la documentación de la API REST generada por Postman, en el siguiente link: https://documenter.getpostman.com/view/5319131/UzJFwyje.
 
 ## Tecnologías utilizadas

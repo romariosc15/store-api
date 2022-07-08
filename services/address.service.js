@@ -2,29 +2,27 @@ const boom = require('@hapi/boom');
 
 const { models } = require('../libs/sequelize');
 
-class ProductService {
+class AddressService {
 
   constructor(){
 
   }
   async create(data) {
-    const newProduct = await models.Product.create(data);
-    return newProduct;
+    const newAddress = await models.Address.create(data);
+    return newAddress;
   }
 
   async find() {
-    const data = await models.Product.findAll({
-      include: ['category']
-    });
+    const data = await models.Address.findAll();
     return data;
   }
 
   async findOne(id) {
-    const row = await models.Product.findByPk(id, {
-      include: ['category']
+    const row = await models.Address.findByPk(id, {
+      include: ['customer']
     });
     if(!row){
-      throw boom.notFound('Product not found.');
+      throw boom.notFound('Address not found.');
     };
     return row;
   }
@@ -43,4 +41,4 @@ class ProductService {
 
 }
 
-module.exports = ProductService;
+module.exports = AddressService;
