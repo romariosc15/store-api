@@ -1,7 +1,7 @@
 
 const { Model, DataTypes, Sequelize } = require('sequelize');
 
-const { ORDER_TABLE } = require('./order.model')
+const { CUSTOMER_TABLE } = require('./customer.model')
 
 const ORDER_TABLE = 'orders';
 
@@ -12,13 +12,13 @@ const OrderSchema =  {
     primaryKey: true,
     type: DataTypes.INTEGER
   },
-  userId: {
+  customerId: {
     field: 'user_id',
     allowNull: false,
     type: DataTypes.INTEGER,
     unique: true,
     references: {
-      model: ORDER_TABLE,
+      model: CUSTOMER_TABLE,
       key: 'id'
     },
     onUpdate: 'CASCADE',
